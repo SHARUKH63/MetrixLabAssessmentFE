@@ -1,0 +1,8 @@
+<div class="container">
+    <p>Was the interview time and manner (online or in-person) clear to you?</p>
+    <form #f="ngForm">
+        <input type="radio" value=true name="q1Answer" [(ngModel)]="q1Answer"> Yes
+        <input type="radio" value=false name="q1Answer" [(ngModel)]="q1Answer"> No
+        <button [disabled]="q1Answer == undefined" (click)="saveAndProceed();">Next</button>
+     </form>
+</div>

@@ -1,0 +1,10 @@
+<div class="container">
+    <div>
+        <p>Was the interview time and manner (online or in-person) clear to you?</p>
+        <p>{{ feedbackModel?.IsInterviewTimeAndMannerClear ? "Yes" : "No" }}</p>
+    </div>
+    <button (click)="submitFeedback();">Finish</button>
+</div>
+<div *ngIf="loading">
+    
+</div>

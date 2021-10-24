@@ -1,0 +1,9 @@
+<div class="container">
+    <p>What topics were discussed during the interview?</p>
+    <select multiple [(ngModel)]="q4Answer">
+        <option *ngFor="let topic of topicOptions" [value]="topic">
+            {{topic}}
+        </option>
+    </select>
+    <button [disabled]="q4Answer == undefined || !q4Answer.length" (click)="saveAndProceed();">Next</button>
+</div>

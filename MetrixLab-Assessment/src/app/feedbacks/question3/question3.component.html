@@ -1,0 +1,8 @@
+<div class="container">
+    <p>What position did you apply for?</p>
+    <select class="form-select" aria-placeholder="Select any position" aria-label="position-type" [(ngModel)]="q3Answer">
+        <option value="0">Software Engineer</option>
+        <option value="1">Research Manager</option>
+    </select>
+    <button [disabled]="q3Answer == undefined" (click)="saveAndProceed();">Next</button>
+</div>
