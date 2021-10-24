@@ -5,5 +5,7 @@
             {{topic}}
         </option>
     </select>
-    <button [disabled]="q4Answer == undefined || !q4Answer.length" (click)="saveAndProceed();">Next</button>
+    <div class="button-space">
+        <button [disabled]="q4Answer == undefined || !q4Answer.length" class="btn btn-primary" (click)="saveAndProceed();">Next</button>
+    </div>
 </div>

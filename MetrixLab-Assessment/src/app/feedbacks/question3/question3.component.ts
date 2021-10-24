@@ -5,7 +5,8 @@ import { FeedbackService } from '../feedbacks.service';
 
 @Component({
   selector: 'question-3',
-  templateUrl: './question3.component.html'
+  templateUrl: './question3.component.html',
+  styleUrls: ['./question3.component.scss']
 })
 export class Question3Component {
 

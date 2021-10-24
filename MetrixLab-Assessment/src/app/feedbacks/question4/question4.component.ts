@@ -5,7 +5,8 @@ import { FeedbackService } from '../feedbacks.service';
 
 @Component({
     selector: 'question-4',
-    templateUrl: './question4.component.html'
+    templateUrl: './question4.component.html',
+    styleUrls: ['./question4.component.scss']
 })
 export class Question4Component implements OnInit {
 

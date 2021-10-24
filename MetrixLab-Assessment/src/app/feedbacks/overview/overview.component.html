@@ -1,9 +1,12 @@
 <div class="container">
     <div>
-        <p>Was the interview time and manner (online or in-person) clear to you?</p>
-        <p>{{ feedbackModel?.IsInterviewTimeAndMannerClear ? "Yes" : "No" }}</p>
+        <p>Was the interview time and manner (online or in-person) clear to you? : {{ feedbackModel?.IsInterviewTimeAndMannerClear ? "Yes" : "No" }} </p> 
+        <p>Was the person conducting the interview or discussion on time? : {{ feedbackModel?.IsInterviewOnTime ? "Yes" : "No" }}</p>
+        <p>What position did you apply for? : {{ feedbackModel?.PositionType ? feedbackModel?.PositionType : "" }}</p>
+        <p>What topics were discussed during the interview? : {{ feedbackModel?.Topics }}</p>
+        <p>How can we improve our hiring process?? : {{ feedbackModel?.FeedbackText }}</p>
     </div>
-    <button (click)="submitFeedback();">Finish</button>
+    <button class="btn btn-primary" (click)="submitFeedback();">Finish</button>
 </div>
 <div *ngIf="loading">
     

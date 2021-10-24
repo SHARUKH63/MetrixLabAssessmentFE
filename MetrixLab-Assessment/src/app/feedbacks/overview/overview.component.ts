@@ -34,7 +34,7 @@ export class OverviewComponent implements OnInit{
                     .subscribe(
                         () => { 
                             delay(5000);
-                            this.router.navigateByUrl(''); 
+                            this.router.navigateByUrl('https://www.metrixlab.com/'); 
                         },
                         () => console.log("Failed")
                     );

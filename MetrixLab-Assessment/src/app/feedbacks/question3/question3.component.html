@@ -4,5 +4,7 @@
         <option value="0">Software Engineer</option>
         <option value="1">Research Manager</option>
     </select>
-    <button [disabled]="q3Answer == undefined" (click)="saveAndProceed();">Next</button>
+    <div class="button-space">
+        <button [disabled]="q3Answer == undefined" class="btn btn-primary" (click)="saveAndProceed();">Next</button>
+    </div>
 </div>
