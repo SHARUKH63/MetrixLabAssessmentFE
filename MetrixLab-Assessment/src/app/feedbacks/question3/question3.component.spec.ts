@@ -35,7 +35,7 @@ describe('Question3Component', () => {
       feedbackService = TestBed.inject(FeedbackService);
     });
 
-    it('should create the Question1 component', () => {
+    it('should create the Question3 component', () => {
         expect(component).toBeTruthy();
       });
 

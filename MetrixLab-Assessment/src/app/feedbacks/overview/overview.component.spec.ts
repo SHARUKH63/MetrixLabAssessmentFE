@@ -53,11 +53,11 @@ describe('OverviewComponent', () => {
         expect(component.loading).toBeFalse();
     });
 
-    it('should submit feedback when submitFeedback() is called', () => {
+    it('should get error meaage box when submitFeedback() returns error', () => {
         spyOn(confirmationDialogService, "confirm").and.returnValue(Promise.resolve(true));
-        let spyObj = spyOn(confirmationDialogService, "show");
+        spyOn(confirmationDialogService, "show");
         spyOn(feedbackService, "submitFeedback").and.returnValue(throwError({status: 500}));
         component.submitFeedback();
-        expect(spyObj).toHaveBeenCalled();
+        expect(confirmationDialogService.show).toHaveBeenCalled();
     });
 });

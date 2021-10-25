@@ -16,6 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OverviewComponent } from './feedbacks/overview/overview.component';
 import { ConfirmationDialogService } from './shared/confirmationdialog.service';
 import { LoaderComponent } from './shared/loader.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { LoaderComponent } from './shared/loader.component';
     Question4Component,
     Question5Component,
     OverviewComponent,
-    LoaderComponent
+    LoaderComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

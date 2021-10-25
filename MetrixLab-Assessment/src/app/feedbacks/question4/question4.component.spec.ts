@@ -35,13 +35,13 @@ describe('Question4Component', () => {
       feedbackService = TestBed.inject(FeedbackService);
     });
 
-    it('should create the Question1 component', () => {
+    it('should create the Question4 component', () => {
         expect(component).toBeTruthy();
       });
 
     it('should get redirect to question2 when saveAndProceed() is called', () => {
         component.saveAndProceed();
-        expect(router.navigateByUrl).toHaveBeenCalledWith(['/question-5']);
+        expect(router.navigateByUrl).toBe('/question-5');
     });
 
 });
