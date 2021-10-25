@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FeedbackService } from '../feedbacks.service';
-import { delay, finalize } from "rxjs/operators";
+import {  finalize } from "rxjs/operators";
 import { ConfirmationDialogService } from 'src/app/shared/confirmationdialog.service';
 import { FeedbackRequest } from 'src/app/models/Request/feedback-request.model';
+import { FeedbackResponse } from 'src/app/models/Response/feedback-response.model';
 
 @Component({
   selector: 'overview',
@@ -13,8 +13,8 @@ export class OverviewComponent implements OnInit{
 
     feedbackModel: FeedbackRequest | undefined = undefined;
     loading: boolean = false;
+
     constructor(
-        private router: Router,
         private feedbackService: FeedbackService,
         private confirmationDialogService: ConfirmationDialogService){
     }
@@ -32,11 +32,17 @@ export class OverviewComponent implements OnInit{
                 this.feedbackService.submitFeedback(feedbackRequest)
                     .pipe(finalize(() => this.loading = false))
                     .subscribe(
-                        () => { 
-                            delay(5000);
-                            this.router.navigateByUrl('https://www.metrixlab.com/'); 
+                        (res: FeedbackResponse) => {
+                            if (res.IsSuccessful){
+                                this.confirmationDialogService.show('Feedback Submitted', `${res.Message}`);
+                                setTimeout(function(){
+                                    window.location.href = 'https://www.metrixlab.com/';
+                                }, 5000);
+                            }
                         },
-                        () => console.log("Failed")
+                        () => {
+                            this.confirmationDialogService.show('Feedback Submittion failed', '');
+                        }
                     );
             }
         });

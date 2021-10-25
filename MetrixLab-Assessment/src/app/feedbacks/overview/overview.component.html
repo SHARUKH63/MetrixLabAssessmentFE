@@ -8,6 +8,5 @@
     </div>
     <button class="btn btn-primary" (click)="submitFeedback();">Finish</button>
 </div>
-<div *ngIf="loading">
-    
-</div>
+
+<app-loader [loading]="loading"></app-loader>

@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { RouterTestingModule } from "@angular/router/testing";
 import { FeedbackService } from "../feedbacks.service";
 import { OverviewComponent } from "./overview.component";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { ConfirmationDialogService } from "src/app/shared/confirmationdialog.service";
 import { FeedbackMockService } from "../feedbacks.service.mock";
-import { of } from "rxjs";
+import { of, throwError } from "rxjs";
 import { FeedbackResponse } from "src/app/models/Response/feedback-response.model";
 
 describe('OverviewComponent', () => {
@@ -16,8 +15,7 @@ describe('OverviewComponent', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [
-            HttpClientTestingModule,
-            RouterTestingModule
+            HttpClientTestingModule
         ],
         declarations: [
             OverviewComponent
@@ -48,10 +46,18 @@ describe('OverviewComponent', () => {
         expect(component.feedbackModel).toBeDefined();
     });
 
-    // fit('should submit feedback when submitFeedback() is called', () => {
-    //     spyOn(confirmationDialogService, "confirm").and.returnValue(of());
-    //     spyOn(feedbackService, "submitFeedback").and.returnValue(of(new FeedbackResponse()));
-    //     component.submitFeedback();
-    //     expect(component.loading).toBeFalse();
-    // });
+    it('should submit feedback when submitFeedback() is called', () => {
+        spyOn(confirmationDialogService, "confirm").and.returnValue(Promise.resolve(true));
+        spyOn(feedbackService, "submitFeedback").and.returnValue(of(new FeedbackResponse()));
+        component.submitFeedback();
+        expect(component.loading).toBeFalse();
+    });
+
+    it('should submit feedback when submitFeedback() is called', () => {
+        spyOn(confirmationDialogService, "confirm").and.returnValue(Promise.resolve(true));
+        let spyObj = spyOn(confirmationDialogService, "show");
+        spyOn(feedbackService, "submitFeedback").and.returnValue(throwError({status: 500}));
+        component.submitFeedback();
+        expect(spyObj).toHaveBeenCalled();
+    });
 });

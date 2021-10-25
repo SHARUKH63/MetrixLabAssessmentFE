@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: "https://localhost:44389/",
+  apiUrl: "http://fullstackassessment-api.azurewebsites.net/",
   webUrl: "http://localhost:4200/"
 };
