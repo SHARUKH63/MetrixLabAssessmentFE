@@ -23,7 +23,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm install ./MetrixLabAssessmentFE\MetrixLab-Assessment\Package.json
+          npm install ./MetrixLabAssessmentFE\MetrixLab-Assessment\package.json
           npm run build --if-present
           npm run test --if-present
       
