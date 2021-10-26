@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { RouterTestingModule } from "@angular/router/testing";
 import { FeedbackService } from "../feedbacks.service";
 import { FeedbackMockService } from "../feedbacks.service.mock";
+import { Question2Component } from "../question2/question2.component";
 import { Question1Component } from "./question1.component";
 
 describe('Question1Component', () => {
@@ -17,16 +18,21 @@ describe('Question1Component', () => {
         imports: [
             FormsModule,
             HttpClientTestingModule,
-            RouterTestingModule
+            RouterTestingModule.withRoutes([
+                { path: '/question-2', component: Question2Component }
+            ])
         ],
         declarations: [
             Question1Component
-
         ],
         providers: [
             {
                 provide: FeedbackService,
                 useclass: FeedbackMockService
+            },
+            { 
+                provide: Router, 
+                useValue: router
             }
         ]
       }).compileComponents();
@@ -41,7 +47,7 @@ describe('Question1Component', () => {
 
     it('should get redirect to question2 when saveAndProceed() is called', () => {
         component.saveAndProceed();
-        expect(router.navigateByUrl).toHaveBeenCalledWith(['/question-2']);
+        expect(router.navigateByUrl).toHaveBeenCalledWith('/question-2');
     });
 
 });

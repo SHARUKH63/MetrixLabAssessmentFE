@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { RouterTestingModule } from "@angular/router/testing";
 import { FeedbackService } from "../feedbacks.service";
 import { FeedbackMockService } from "../feedbacks.service.mock";
+import { Question5Component } from "../question5/question5.component";
 import { Question4Component } from "./question4.component";
 
 describe('Question4Component', () => {
@@ -17,16 +18,21 @@ describe('Question4Component', () => {
         imports: [
             FormsModule,
             HttpClientTestingModule,
-            RouterTestingModule
+            RouterTestingModule.withRoutes([
+                { path: '/question-5', component: Question5Component }
+            ])
         ],
         declarations: [
             Question4Component
-
         ],
         providers: [
             {
                 provide: FeedbackService,
                 useclass: FeedbackMockService
+            },
+            { 
+                provide: Router, 
+                useValue: router
             }
         ]
       }).compileComponents();
@@ -39,9 +45,9 @@ describe('Question4Component', () => {
         expect(component).toBeTruthy();
       });
 
-    it('should get redirect to question2 when saveAndProceed() is called', () => {
+    it('should get redirect to question5 when saveAndProceed() is called', () => {
         component.saveAndProceed();
-        expect(router.navigateByUrl).toBe('/question-5');
+        expect(router.navigateByUrl).toHaveBeenCalledWith('/question-5');
     });
 
 });
