@@ -4,6 +4,7 @@ import {  finalize } from "rxjs/operators";
 import { ConfirmationDialogService } from 'src/app/shared/confirmationdialog.service';
 import { FeedbackRequest } from 'src/app/models/Request/feedback-request.model';
 import { FeedbackResponse } from 'src/app/models/Response/feedback-response.model';
+import { PositionType } from 'src/app/models/Enum/position-type.enum';
 
 @Component({
   selector: 'overview',
@@ -12,6 +13,7 @@ import { FeedbackResponse } from 'src/app/models/Response/feedback-response.mode
 export class OverviewComponent implements OnInit{
 
     feedbackModel: FeedbackRequest | undefined = undefined;
+    positionType: string = "";
     loading: boolean = false;
 
     constructor(
@@ -21,6 +23,7 @@ export class OverviewComponent implements OnInit{
 
     public ngOnInit(): void {
         this.feedbackModel = this.feedbackService.feedbackRequest$.value;
+        this.positionType = this.feedbackModel.PositionType ? PositionType[this.feedbackModel.PositionType] : "";
     }
  
     public submitFeedback(){
