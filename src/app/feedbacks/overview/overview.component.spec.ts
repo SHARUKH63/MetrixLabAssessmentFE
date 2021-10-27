@@ -21,6 +21,7 @@ describe('OverviewComponent', () => {
         declarations: [
             OverviewComponent
         ],
+        schemas:[CUSTOM_ELEMENTS_SCHEMA],
         providers: [
             {
                 provide: FeedbackService,
